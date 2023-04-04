@@ -1,0 +1,3 @@
+Course name: 撒旦士大夫, Teacher: 士大夫, Classroom location: 士大夫, lesson time: , Teaching Semester: , Teaching School: , Course Credit: 3, Course Duration: 6, course mark: 100.00, course gpa: 4.00, passed: true
+Course name: 阿松大, Teacher: , Classroom location: , lesson time: , Teaching Semester: , Teaching School: , Course Credit: 6, Course Duration: 2, course mark: 58.00, course gpa: 0.00, passed: false
+Course name: 就看见, Teacher: , Classroom location: , lesson time: , Teaching Semester: , Teaching School: , Course Credit: 5, Course Duration: 0, course mark: 96.00, course gpa: 4.00, passed: true
