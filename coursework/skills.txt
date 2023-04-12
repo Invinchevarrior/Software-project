@@ -1,0 +1,5 @@
+Software:pycharm
+Language:Chinese
+Hardware: null
+Knowledge and Theoretical skills: math
+Others:football
