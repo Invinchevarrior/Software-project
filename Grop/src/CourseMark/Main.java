@@ -43,7 +43,7 @@ public class Main {
         frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        JButton addButton = new JButton("添加课程");
+        JButton addButton = new JButton("Add course");
         addButton.addActionListener(e -> {
             Course course = new Course("", "", "", "", "", "", 0, 0, 0,0,false);
             CourseDialog dialog = new CourseDialog(frame, course);
@@ -55,7 +55,7 @@ public class Main {
             }
         });
 
-        JButton editButton = new JButton("编辑课程");
+        JButton editButton = new JButton("Edit course");
         editButton.addActionListener(e -> {
             int selectedIndex = courseList.getSelectedIndex();
             if (selectedIndex != -1) {
@@ -68,11 +68,11 @@ public class Main {
                     courseListModel.set(selectedIndex, course.getName());
                 }
             } else {
-                JOptionPane.showMessageDialog(frame, "请选择一个课程进行编辑。");
+                JOptionPane.showMessageDialog(frame, "Please select a course first.");
             }
         });
 
-        JButton analyzeButton = new JButton("成绩分析");
+        JButton analyzeButton = new JButton("Grade analysis");
         analyzeButton.addActionListener(e -> {
             ArrayList<Course> courses = courseManager.getCourses();
             int count = courses.size();
@@ -88,8 +88,8 @@ public class Main {
 
             totalGPA = totalMark / totalCredit / 20 - 1;
 
-            JOptionPane.showMessageDialog(frame, "平均成绩：" + decimalFormat.format(totalMark / totalCredit) + "\n" +
-                    "绩点：" + decimalFormat.format(totalGPA));
+            JOptionPane.showMessageDialog(frame, "Average Grade：" + decimalFormat.format(totalMark / totalCredit) + "\n" +
+                    "GPA：" + decimalFormat.format(totalGPA));
         });
 
         buttonPanel.add(addButton);
