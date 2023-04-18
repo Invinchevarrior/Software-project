@@ -11,7 +11,7 @@ public class CourseDialog extends JDialog {
     private boolean confirmed;
 
     public CourseDialog(JFrame owner, Course course) {
-        super(owner, "课程信息", true);
+        super(owner, "Course information", true);
         this.course = course;
         this.confirmed = false;
 
@@ -19,7 +19,7 @@ public class CourseDialog extends JDialog {
         setSize(400, 300);
         setLocationRelativeTo(owner);
 
-        String[] labels = {"课程名称", "老师", "地点", "时间", "学期", "学校", "学分", "课时", "成绩","课程绩点"};
+        String[] labels = {"Course name", "Teacher", "Location", "Time", "Semester", "School", "Credit", "Class period", "Grade","Course GPA"};
         JPanel inputPanel = new JPanel(new GridLayout(labels.length + 1, 2));
         textFields = new JTextField[labels.length];
 
@@ -29,21 +29,21 @@ public class CourseDialog extends JDialog {
             inputPanel.add(textFields[i]);
         }
 
-        inputPanel.add(new JLabel("是否及格"));
+        inputPanel.add(new JLabel("Pass or not"));
         passedLabel = new JLabel();
         inputPanel.add(passedLabel);
 
         add(inputPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        JButton saveButton = new JButton("保存");
+        JButton saveButton = new JButton("Save");
         saveButton.addActionListener(e -> {
             saveCourseInfo();
             confirmed = true;
             dispose();
         });
 
-        JButton cancelButton = new JButton("取消");
+        JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(e -> {
             confirmed = false;
             dispose();
@@ -65,7 +65,7 @@ public class CourseDialog extends JDialog {
         textFields[8].setText(String.valueOf(course.getMark()));
         textFields[9].setText(String.valueOf(course.getGPA()));
         boolean isPassed = course.getMark() >= 60;
-        passedLabel.setText(isPassed ? "及格" : "不及格");
+        passedLabel.setText(isPassed ? "Pass" : "Not pass");
     }
 
     public boolean isConfirmed() {
@@ -85,6 +85,7 @@ public class CourseDialog extends JDialog {
         course.setGPA(Float.parseFloat(textFields[9].getText()));
         boolean isPassed = course.getMark() >= 60;
         course.setPassed(isPassed);
-        passedLabel.setText(isPassed ? "及格" : "不及格");
+        passedLabel.setText(isPassed ? "Pass" : "Not pass");
     }
 }
+
