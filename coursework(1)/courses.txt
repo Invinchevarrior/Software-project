@@ -1,2 +1,0 @@
-Course name: Math, Teacher: yzq, Classroom location: BUPT, lesson time: 8, Teaching Semester: 2023.4, Teaching School: BUPT, Course Credit: 2, Course Duration: 30, course mark: 50.00, course gpa: 0.00, passed: false
-Course name: ghkk, Teacher: fyq, Classroom location: 教三, lesson time: 8:00-9:00, Teaching Semester: 5, Teaching School: bupt, Course Credit: 4, Course Duration: 20, course mark: 88.00, course gpa: 3.70, passed: true
