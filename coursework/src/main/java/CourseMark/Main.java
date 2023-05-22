@@ -16,6 +16,7 @@ public class Main {
         EventQueue.invokeLater(() -> {
             try {
                 Main window = new Main();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -27,12 +28,50 @@ public class Main {
         initialize();
     }
 
+    private String padString(String s, int width, int alignment) {
+        if (s.length() >= width) {
+            return s;
+        }
+
+        int padding = width - s.length();
+        StringBuilder paddedString = new StringBuilder(s);
+
+        switch (alignment) {
+            case SwingConstants.LEFT:
+                for (int i = 0; i < padding; i++) {
+                    paddedString.append(" ");
+                }
+                break;
+
+            case SwingConstants.RIGHT:
+                for (int i = 0; i < padding; i++) {
+                    paddedString.insert(0, " ");
+                }
+                break;
+
+            case SwingConstants.CENTER:
+                int leftPadding = padding / 2;
+                int rightPadding = padding - leftPadding;
+
+                for (int i = 0; i < leftPadding; i++) {
+                    paddedString.insert(0, " ");
+                }
+
+                for (int i = 0; i < rightPadding; i++) {
+                    paddedString.append(" ");
+                }
+                break;
+        }
+
+        return paddedString.toString();
+    }
+
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-//      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BorderLayout(0, 0));
         frame.setVisible(true);
+        frame.setBounds(600, 400, 450, 300);
+
+        frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
         courseListModel = new DefaultListModel<>();
         courseList = new JList<>(courseListModel);
@@ -88,15 +127,72 @@ public class Main {
 
             totalGPA = totalMark / totalCredit / 20 - 1;
 
-            JOptionPane.showMessageDialog(frame, "Average Grade：" + decimalFormat.format(totalMark / totalCredit) + "\n" +
-                    "GPA：" + decimalFormat.format(totalGPA));
+            JOptionPane.showMessageDialog(frame, "Average Grade:" + decimalFormat.format(totalMark / totalCredit) + "\n" +
+                    "GPA:" + decimalFormat.format(totalGPA));
         });
 
+        JButton transcriptButton = new JButton("Transcript");
+        transcriptButton.addActionListener(e -> {
+            ArrayList<Course> courses = courseManager.getCourses();
+            int courseNameWidth = 20;
+            int teacherWidth = 20;
+            int locationWidth = 20;
+            int semesterWidth = 20;
+            int schoolWidth = 20;
+            int creditWidth = 15;
+            int coursedurationWidth = 20;
+            int markWidth = 10;
+            int gpaWidth = 10;
+            int isPassWidth = 10;
+
+            StringBuilder transcript = new StringBuilder();
+            transcript.append(padString("Course name", courseNameWidth, SwingConstants.CENTER))
+                    .append(padString("Teacher", teacherWidth, SwingConstants.CENTER))
+                    .append(padString("Classroom location", locationWidth, SwingConstants.CENTER))
+                    .append(padString("Teaching Semester", semesterWidth, SwingConstants.CENTER))
+                    .append(padString("Teaching School", schoolWidth, SwingConstants.CENTER))
+                    .append(padString("Credit", creditWidth, SwingConstants.CENTER))
+                    .append(padString("Course duration", coursedurationWidth, SwingConstants.CENTER))
+                    .append(padString("Mark", markWidth, SwingConstants.CENTER))
+                    .append(padString("GPA", gpaWidth, SwingConstants.CENTER))
+                    .append(padString("Pass", isPassWidth, SwingConstants.CENTER))
+                    .append("\n");
+
+            for (Course course : courses) {
+                transcript.append(padString(course.getName(), courseNameWidth, SwingConstants.CENTER))
+                        .append(padString(course.getTeacher(), teacherWidth, SwingConstants.CENTER))
+                        .append(padString(course.getLocation(), locationWidth, SwingConstants.CENTER))
+                        .append(padString(course.getSemester(), semesterWidth, SwingConstants.CENTER))
+                        .append(padString(course.getSchool(), schoolWidth, SwingConstants.CENTER))
+                        .append(padString(String.valueOf(course.getCredit()), creditWidth, SwingConstants.CENTER))
+                        .append(padString(String.valueOf(course.getHours()), coursedurationWidth, SwingConstants.CENTER))
+                        .append(padString(String.valueOf(course.getMark()), markWidth, SwingConstants.CENTER))
+                        .append(padString(String.valueOf(course.getGPA()), gpaWidth, SwingConstants.CENTER))
+                        .append(padString(String.valueOf(course.isPass()), isPassWidth, SwingConstants.CENTER))
+                        .append("\n");
+            }
+
+            JTextArea textArea = new JTextArea(transcript.toString());
+            textArea.setFont(new Font("monospaced", Font.PLAIN, 12));
+            textArea.setEditable(false);
+
+            JScrollPane transcriptScrollPane = new JScrollPane(textArea);
+            transcriptScrollPane.setPreferredSize(new Dimension(frame.getWidth()*3, frame.getHeight()*3));
+            transcriptScrollPane.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+
+            JDialog transcriptDialog = new JDialog(frame, "Transcript");
+            transcriptDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            transcriptDialog.add(transcriptScrollPane);
+            transcriptDialog.pack();
+            transcriptDialog.setVisible(true);
+        });
+
+        buttonPanel.add(transcriptButton);
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
         buttonPanel.add(analyzeButton);
 
-        // 初始化课程列表
+        // initialization of courses
         for (Course course : courseManager.getCourses()) {
             courseListModel.addElement(course.getName());
         }

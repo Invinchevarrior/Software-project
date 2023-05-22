@@ -109,7 +109,7 @@ public class GUI_1 extends JFrame implements ActionListener {
                 aboutText.setBounds(getWidth() / 2 - 150, getHeight() / 2 + 200, 350, 50);
                 aboutText.setFont(new Font("Arial", Font.PLAIN, 32));
                 aboutText.setEditable(false);
-                aboutText.setText("This is a learning system for recording your learning situation. If you have any question, please contact with us by the email 114514@porn.com");
+                aboutText.setText("This is a learning system for recording your learning situation. If you have any question, please contact with us by the email 123456@bupt.edu.cn");
                 aboutText.setLineWrap(true);
                 aboutFrame.add(aboutText);
 
@@ -127,7 +127,7 @@ public class GUI_1 extends JFrame implements ActionListener {
                 if (username.equals("Yuqi Feng")) { // Check if username is correct
                     if (password.equals("123456")) { // Check if password is correct
                         loginStatus.setText("Successfully log in!");
-                        new RecordList();
+                        new page2();
                     } else {
                         loginStatus.setText("Wrong password");
                     }

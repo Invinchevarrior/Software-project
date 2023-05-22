@@ -9,10 +9,11 @@ public class clubManager {
     public clubManager() {
         clubs = new ArrayList<>();
         loadclubs();
-    }
+    } 
 
-    public ArrayList<club> getclubs() {
-        return clubs;
+    public void removeclub(club club) {
+        clubs.remove(club);
+        saveclubs();
     }
 
     public void addclub(club club) {
@@ -42,6 +43,10 @@ public class clubManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<club> getclubs() {
+        return clubs;
     }
 }
 

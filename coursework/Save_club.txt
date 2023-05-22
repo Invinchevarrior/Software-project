@@ -1,0 +1,2 @@
+	Name: 篮球社              Roles undertaken: 社长              RolesRank: 1              Credit: 1              Semester: 1              Hours: 24              Verified: true
+	Name: 羽毛球社              Roles undertaken: 社长              RolesRank: 2              Credit: 2              Semester: 2              Hours: 30              Verified: true

@@ -17,7 +17,7 @@ public class clubDialog extends JDialog {
         setSize(400, 300);
         setLocationRelativeTo(owner);
 
-        String[] labels = {"name_club", "name_role", "semester", "credit", "hours"};
+        String[] labels = {"name_club", "name_role", "role_rank", "semester", "credit", "hours"};
         JPanel inputPanel = new JPanel(new GridLayout(labels.length + 1, 2));
         textFields = new JTextField[labels.length];
 
@@ -30,7 +30,7 @@ public class clubDialog extends JDialog {
         inputPanel.add(new JLabel("verified/not-verified"));
         passedCheckBox = new JCheckBox();
         inputPanel.add(passedCheckBox);
-
+    
         add(inputPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
@@ -45,6 +45,7 @@ public class clubDialog extends JDialog {
         cancelButton.addActionListener(e -> {
             confirmed = false;
             dispose();
+
         });
 
         buttonPanel.add(saveButton);
@@ -54,9 +55,10 @@ public class clubDialog extends JDialog {
         // Initialize text fields and check box with course information
         textFields[0].setText(club.getname_Club());
         textFields[1].setText(club.getname_Role());
-        textFields[2].setText(club.getSemester());
-        textFields[3].setText(String.valueOf(club.getCredit()));
-        textFields[4].setText(String.valueOf(club.getHours()));
+        textFields[2].setText(String.valueOf(club.get_rolerank()));
+        textFields[3].setText(club.getSemester());
+        textFields[4].setText(String.valueOf(club.getCredit()));
+        textFields[5].setText(String.valueOf(club.getHours()));
         passedCheckBox.setSelected(club.isverified());
     }
 
@@ -67,6 +69,7 @@ public class clubDialog extends JDialog {
     private void saveClubInfo() {
         club.setname_Club(textFields[0].getText());
         club.setname_Role(textFields[1].getText());
+        club.set_rolerank(Integer.parseInt(textFields[2].getText()));
         club.setSemester(textFields[2].getText());
         club.setCredit(Integer.parseInt(textFields[3].getText()));
         club.setHours(Integer.parseInt(textFields[4].getText()));

@@ -17,7 +17,7 @@ public class volunteerDialog extends JDialog {
         setSize(400, 300);
         setLocationRelativeTo(owner);
 
-        String[] labels = {"name", "time", "semester", "credit", "hours"};
+        String[] labels = {"name", "time", "semester", "volunteer_rank", "credit", "hours"};
         JPanel inputPanel = new JPanel(new GridLayout(labels.length + 1, 2));
         textFields = new JTextField[labels.length];
 
@@ -55,8 +55,9 @@ public class volunteerDialog extends JDialog {
         textFields[0].setText(volunteer.getName());
         textFields[1].setText(volunteer.getTime());
         textFields[2].setText(volunteer.getSemester());
-        textFields[3].setText(String.valueOf(volunteer.getCredit()));
-        textFields[4].setText(String.valueOf(volunteer.getHours()));
+        textFields[3].setText(String.valueOf(volunteer.getvolunteer_rank()));
+        textFields[4].setText(String.valueOf(volunteer.getCredit()));
+        textFields[5].setText(String.valueOf(volunteer.getHours()));
         passedCheckBox.setSelected(volunteer.isverified());
     }
 
@@ -68,8 +69,9 @@ public class volunteerDialog extends JDialog {
         volunteer.setName(textFields[0].getText());
         volunteer.setTime(textFields[1].getText());
         volunteer.setSemester(textFields[2].getText());
-        volunteer.setCredit(Integer.parseInt(textFields[3].getText()));
-        volunteer.setHours(Integer.parseInt(textFields[4].getText()));
+        volunteer.setvolunteer_rank(Integer.parseInt(textFields[3].getText()));
+        volunteer.setCredit(Integer.parseInt(textFields[4].getText()));
+        volunteer.setHours(Integer.parseInt(textFields[5].getText()));
         volunteer.setverified(passedCheckBox.isSelected());
     }
 }

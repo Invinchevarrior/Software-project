@@ -7,15 +7,25 @@ public class club implements Serializable {
     private String semester;
     private int credit;
     private int hours;
+    private int role_rank;
     private boolean verified;
 
-    public club(String name_Club, String name_Role, String semester, int credit, int hours, boolean verified) {
+    public club(String name_Club, String name_Role, String semester, int credit, int hours, int role_rank, boolean verified) {
         this.name_Club = name_Club;
         this.name_Role = name_Role;
         this.semester = semester;
         this.credit = credit;
         this.hours = hours;
+        this.role_rank = role_rank;
         this.verified = verified;
+    }
+
+    public int get_rolerank() {
+        return role_rank;
+    }
+
+    public void set_rolerank(int role_rank) {
+        this.role_rank = role_rank;
     }
 
     public String getname_Club() {

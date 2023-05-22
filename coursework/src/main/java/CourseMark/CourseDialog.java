@@ -2,7 +2,6 @@ package CourseMark;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class CourseDialog extends JDialog {
     private Course course;
@@ -88,4 +87,3 @@ public class CourseDialog extends JDialog {
         passedLabel.setText(isPassed ? "Pass" : "Not pass");
     }
 }
-

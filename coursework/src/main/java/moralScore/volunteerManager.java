@@ -1,6 +1,7 @@
 package moralScore;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class volunteerManager {
     private ArrayList<Volunteer> volunteers;
@@ -13,6 +14,11 @@ public class volunteerManager {
 
     public ArrayList<Volunteer> getVolunteers() {
         return volunteers;
+    }
+
+    public void removevolunteer(Volunteer volunteer) {
+        volunteers.remove(volunteer);
+        saveVolunteers();
     }
 
     public void addVolunteer(Volunteer volunteer) {
@@ -44,4 +50,10 @@ public class volunteerManager {
         }
     }
 }
+
+
+    
+
+   
+    
 

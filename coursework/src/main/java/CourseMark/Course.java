@@ -94,6 +94,7 @@ public class Course implements Serializable {
         this.hours = hours;
     }
 
+
     public float getMark() {
         return mark;
     }
@@ -102,7 +103,9 @@ public class Course implements Serializable {
         this.mark = mark;
         calculateGPA();
     }
-
+    public boolean isPass() {
+        return passed;
+    }
 
     public void setPassed(boolean passed) {
         this.passed = passed;

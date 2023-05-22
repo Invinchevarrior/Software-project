@@ -7,14 +7,16 @@ public class Volunteer implements Serializable {
     private String semester;
     private int credit;
     private int hours;
+    private int volunteer_rank;
     private boolean verified;
 
-    public Volunteer(String name, String time, String semester, int credit, int hours, boolean verified) {
+    public Volunteer(String name, String time, String semester, int credit, int hours, int volunteer_rank, boolean verified) {
         this.name = name;
         this.time = time;
         this.semester = semester;
         this.credit = credit;
         this.hours = hours;
+        this.volunteer_rank = volunteer_rank;
         this.verified = verified;
     }
 
@@ -24,6 +26,14 @@ public class Volunteer implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getvolunteer_rank() {
+        return volunteer_rank;
+    }
+
+    public void setvolunteer_rank(int volunteer_rank) {
+        this.volunteer_rank = volunteer_rank;
     }
 
     public String getTime() {
