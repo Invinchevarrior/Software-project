@@ -1,0 +1,2 @@
+	Name: Basketball club              Roles undertaken: leader              RolesRank: 1              Credit: 1              Semester: 1              Hours: 1              Verified: true
+	Name: Badminton club              Roles undertaken: leader              RolesRank: 2              Credit: 2              Semester: 2              Hours: 2              Verified: true
